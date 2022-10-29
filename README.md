@@ -1,4 +1,4 @@
-# Project _NAME_
+# Project Village
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
@@ -6,86 +6,87 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ### Student Info
 
--   Name: _YOUR NAME_
--   Section: _##_
+-   Name: Jonathan Luke
+-   Section: 03/04
 
 ## Simulation Design
 
-_A brief explanation of your simulation._
+I will attempt to bring a small village of NPCs to life! They will gather food/hunt and guard the village as well as craft.
 
 ### Controls
 
--   _List all of the actions the player can have in your simulation_
-    -   _Include how to preform each action ( keyboard, mouse, UI Input )_
-    -   _Include what impact an action has in the simulation ( if is could be unclear )_
+-   Walk: WASD, navigates through the world
+    Attack: mouse/LMB, can damage enemy fauna
+    Craft: UI Input, can make weapons to help hunt or gaurd village
 
-## _Agent 1 Name_
+## Hunter
 
-_A brief explanation of this agent._
+Will go out and hunt small animals
 
-### _State 1 Name_
+### Passive
 
-**Objective:** _A brief explanation of this state's objective._
-
-#### Steering Behaviors
-
-- _List all behaviors used by this state_
-   - _If behavior has input data list it here_
-   - _eg, Flee - nearest Agent2_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
-   - _eg, When this agent gets within range of Agent2_
-   - _eg, When this agent has reached target of State2_
-   
-### _State 2 Name_
-
-**Objective:** _A brief explanation of this state's objective._
+**Objective:** kill small animals and bring their meat back to a store house in the village
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- Seek - nearest small animal
+- Flee - large animals in range
+- Obstacles - walls and small animals
+- Seperation - other hunters
    
 #### State Transistions
 
-- _List all the ways this agent can transition to this state_
+- When hunter is in range of small animal
+- When there is not enough meat in the village
+- When there no threat to the village
 
-## _Agent 2 Name_
+### Aggresive
 
-_A brief explanation of this agent._
-
-### _State 1 Name_
-
-**Objective:** _A brief explanation of this state's objective._
+**Objective:** To go out and hunt a large animal
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- Seek large animals 
+- ignore small animals
+- Obstacles - walls trees and large animals
+- Seperation - small animals 
    
 #### State Transistions
 
-- _List all the ways this agent can transition to this state_
-   
-### _State 2 Name_
+- If a large animal wanders too close to the town or hunter
 
-**Objective:** _A brief explanation of this state's objective._
+## Large Animal
+
+A larger animal that will seek out food and try to survive while fleeing hunters 
+
+### Forage
+
+**Objective:** The animal will wander in search of small animals
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- Seek - small animals
+- Flee - hunters and the village 
+- Obstacles - hunters trees and the village
+- Seperation - hunters,players
    
 #### State Transistions
 
-- _List all the ways this agent can transition to this state_
+- if the animals hunger is relatively high
+   
+### Hunt(animal)
+
+**Objective:** The animal will become desperately hungry and devour everything in its immediate sight or if there is none to the village and to hunters
+
+#### Steering Behaviors
+
+- Seek - small animals, hunters, player, village
+- Obstacles - walls, trees
+- Seperation - none?
+   
+#### State Transistions
+
+- when hunger drops below a threshold 
 
 ## Sources
 
