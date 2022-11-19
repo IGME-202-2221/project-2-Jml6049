@@ -20,6 +20,8 @@ public abstract class Agent : MonoBehaviour
 
     public float personalSpace = 1f;
 
+    public float visionRange = 2f;
+
     void Awake()
     {
         if (physicsObject == null)
@@ -35,7 +37,6 @@ public abstract class Agent : MonoBehaviour
 
         totalForce = Vector3.ClampMagnitude(totalForce, maxForce);
         physicsObject.ApplyForce(totalForce);
-
         totalForce = Vector3.zero;
     }
 
@@ -119,6 +120,66 @@ public abstract class Agent : MonoBehaviour
                 float weight = sqrPersonalSpace / (sqrDistance + 0.1f);
                 Flee(other.physicsObject.Position, weight);
             }
+        }
+    }
+
+    protected void AvoidObstacle(Obstacle obstacle)
+    {
+        // Get a vector from this agent to an obstacle
+        Vector3 toObstacle = obstacle.Position - physicsObject.Position;
+
+        // use that vector to check if obstacle is behind this agent
+        float fwdToObstacleDot = Vector3.Dot(physicsObject.Direction, toObstacle);
+        if (fwdToObstacleDot < 0)
+        {
+            return; // return early if behind
+        }
+
+        // check if the obstacle is too far to the left or right
+        float rightToObstacleDot = Vector3.Dot(physicsObject.Right, toObstacle);
+
+        if (Mathf.Abs(rightToObstacleDot) > physicsObject.radius + obstacle.radius)
+        {
+            return; // too far left or right
+        }
+
+        // check if it's within vision range
+       
+
+        if (fwdToObstacleDot > visionRange)
+        {
+            return; // not within range
+        }
+
+        // avoid the obstacle
+        Vector3 desiredVelocity;
+
+        if (rightToObstacleDot > 0)
+        {
+            // obstacle right? steer left
+            desiredVelocity = physicsObject.Right * -maxSpeed;
+        }
+        else
+        {
+            // obstacle left? steer right
+            desiredVelocity = physicsObject.Right * maxSpeed;
+        }
+
+        // Create weight based on how close to the obstacle
+        float weight = visionRange / (fwdToObstacleDot + 0.1f);
+
+        // calculate steering force
+        Vector3 steeringForce = (desiredVelocity - physicsObject.Velocity) * weight;
+
+        // apply the steering force
+        totalForce += steeringForce;
+    }
+
+    protected void AvoidAllObstacles()
+    {
+        foreach (Obstacle obstacle in ObstacleManager.Instance.Obstacles)
+        {
+            AvoidObstacle(obstacle);
         }
     }
 

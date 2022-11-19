@@ -24,6 +24,8 @@ public class PhysicsObject : MonoBehaviour
         get { return transform.position; }
     }
 
+    public Vector3 Right => transform.right;
+
     private float gravityForce = 1f;
 
     public float mass = 1f;
@@ -75,7 +77,7 @@ public class PhysicsObject : MonoBehaviour
             direction = velocity.normalized;
         }
         
-
+        // set rotation
         transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
 
         // Zero acc for next frame

@@ -9,5 +9,7 @@ public class TagPlayer : Agent
         Wander();
         StayInBounds(3f);
         Seperate(AgentManager.Instance.tagPlayers);
+
+        AvoidAllObstacles();
     }
 }
