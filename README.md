@@ -90,14 +90,11 @@ A larger animal that will seek out food and try to survive while fleeing hunters
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+-  Myself :)
 
 ## Make it Your Own
 
-- _List out what you added to your game to make it different for you_
-- _If you will add more agents or states make sure to list here and add it to the documention above_
-- _If you will add your own assets make sure to list it here and add it to the Sources section
+- I will make all my own assests and be adding a crafting system and combat into my game
 
 ## Known Issues
 
