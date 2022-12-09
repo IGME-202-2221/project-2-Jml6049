@@ -59,20 +59,20 @@ Will go out and hunt small animals
 
 A larger animal that will seek out food and try to survive while fleeing hunters 
 
-### Forage
+### Hibernate
 
-**Objective:** The animal will wander in search of small animals
+**Objective:** The animal will wander in it's cave and be docile
 
 #### Steering Behaviors
 
-- Seek - small animals
+- Seek - it's home
 - Flee - hunters and the village 
 - Obstacles - hunters trees and the village
-- Seperation - hunters,players
+- wander - around it's cave
    
 #### State Transistions
 
-- if the animals hunger is relatively high
+- if the animals hunger is low
    
 ### Hunt(animal)
 
@@ -80,9 +80,10 @@ A larger animal that will seek out food and try to survive while fleeing hunters
 
 #### Steering Behaviors
 
-- Seek - small animals, hunters, player, village
+- Seek - small animals, hunters, player, village (if low enough seek it's home)
 - Obstacles - walls, trees
 - Seperation - none?
+- Flee - when health is low flee from everything
    
 #### State Transistions
 
