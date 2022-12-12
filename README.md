@@ -11,13 +11,12 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-I will attempt to bring a small village of NPCs to life! They will gather food/hunt and guard the village as well as craft.
+I will attempt to bring a small village of NPCs to life! They will gather food/hunt and guard the village as well.
 
 ### Controls
 
 -   Walk: WASD, navigates through the world
     Attack: mouse/LMB, can damage enemy fauna
-    Craft: UI Input, can make weapons to help hunt or gaurd village
 
 ## Hunter
 
@@ -25,20 +24,18 @@ Will go out and hunt small animals
 
 ### Passive
 
-**Objective:** kill small animals and bring their meat back to a store house in the village
+**Objective:** kill small animals 
 
 #### Steering Behaviors
 
-- Seek - nearest small animal
-- Flee - large animals in range
-- Obstacles - walls and small animals
+- Custom Seek - nearest small animal
+- Flee - large animals 
+- Wander
 - Seperation - other hunters
    
 #### State Transistions
 
-- When hunter is in range of small animal
-- When there is not enough meat in the village
-- When there no threat to the village
+- The hunters will become aggresive if the Large Animal goes on a rampage
 
 ### Aggresive
 
@@ -48,12 +45,11 @@ Will go out and hunt small animals
 
 - Seek large animals 
 - ignore small animals
-- Obstacles - walls trees and large animals
-- Seperation - small animals 
+- Seperation - hunters
    
 #### State Transistions
 
-- If a large animal wanders too close to the town or hunter
+- Will become passive if large animal dies
 
 ## Large Animal
 
@@ -67,7 +63,7 @@ A larger animal that will seek out food and try to survive while fleeing hunters
 
 - Seek - it's home
 - Flee - hunters and the village 
-- Obstacles - hunters trees and the village
+- Seperate - other large animals
 - wander - around it's cave
    
 #### State Transistions
@@ -76,13 +72,13 @@ A larger animal that will seek out food and try to survive while fleeing hunters
    
 ### Hunt(animal)
 
-**Objective:** The animal will become desperately hungry and devour everything in its immediate sight or if there is none to the village and to hunters
+**Objective:** The animal will become desperately hungry and target the player and hunters
 
 #### Steering Behaviors
 
 - Seek - small animals, hunters, player, village (if low enough seek it's home)
-- Obstacles - walls, trees
-- Seperation - none?
+- wander
+- Seperation - other large animals
 - Flee - when health is low flee from everything
    
 #### State Transistions
@@ -95,11 +91,11 @@ A larger animal that will seek out food and try to survive while fleeing hunters
 
 ## Make it Your Own
 
-- I will make all my own assests and be adding a crafting system and combat into my game
+- I will make all my own art 
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+I've gone back on crafting I will drop the entire element 
 
 ### Requirements not completed
 
