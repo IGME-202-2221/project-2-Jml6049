@@ -11,13 +11,12 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-I will attempt to bring a small village of NPCs to life! They will gather food/hunt and guard the village as well as craft.
+I will attempt to bring a small village of NPCs to life! They will gather food/hunt and guard the village as well.
 
 ### Controls
 
 -   Walk: WASD, navigates through the world
     Attack: mouse/LMB, can damage enemy fauna
-    Craft: UI Input, can make weapons to help hunt or gaurd village
 
 ## Hunter
 
@@ -25,20 +24,18 @@ Will go out and hunt small animals
 
 ### Passive
 
-**Objective:** kill small animals and bring their meat back to a store house in the village
+**Objective:** kill small animals 
 
 #### Steering Behaviors
 
-- Seek - nearest small animal
-- Flee - large animals in range
-- Obstacles - walls and small animals
+- Custom Seek - nearest small animal
+- Flee - large animals 
+- Wander
 - Seperation - other hunters
    
 #### State Transistions
 
-- When hunter is in range of small animal
-- When there is not enough meat in the village
-- When there no threat to the village
+- The hunters will become aggresive if the Large Animal goes on a rampage
 
 ### Aggresive
 
@@ -48,41 +45,41 @@ Will go out and hunt small animals
 
 - Seek large animals 
 - ignore small animals
-- Obstacles - walls trees and large animals
-- Seperation - small animals 
+- Seperation - hunters
    
 #### State Transistions
 
-- If a large animal wanders too close to the town or hunter
+- Will become passive if large animal dies
 
 ## Large Animal
 
 A larger animal that will seek out food and try to survive while fleeing hunters 
 
-### Forage
+### Hibernate
 
-**Objective:** The animal will wander in search of small animals
+**Objective:** The animal will wander in it's cave and be docile
 
 #### Steering Behaviors
 
-- Seek - small animals
+- Seek - it's home
 - Flee - hunters and the village 
-- Obstacles - hunters trees and the village
-- Seperation - hunters,players
+- Seperate - other large animals
+- wander - around it's cave
    
 #### State Transistions
 
-- if the animals hunger is relatively high
+- if the animals hunger is low
    
 ### Hunt(animal)
 
-**Objective:** The animal will become desperately hungry and devour everything in its immediate sight or if there is none to the village and to hunters
+**Objective:** The animal will become desperately hungry and target the player and hunters
 
 #### Steering Behaviors
 
-- Seek - small animals, hunters, player, village
-- Obstacles - walls, trees
-- Seperation - none?
+- Seek - small animals, hunters, player, village (if low enough seek it's home)
+- wander
+- Seperation - other large animals
+- Flee - when health is low flee from everything
    
 #### State Transistions
 
@@ -90,18 +87,15 @@ A larger animal that will seek out food and try to survive while fleeing hunters
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+-  Myself :)
 
 ## Make it Your Own
 
-- _List out what you added to your game to make it different for you_
-- _If you will add more agents or states make sure to list here and add it to the documention above_
-- _If you will add your own assets make sure to list it here and add it to the Sources section
+- I will make all my own art 
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+I've gone back on crafting I will drop the entire element 
 
 ### Requirements not completed
 
