@@ -14,5 +14,10 @@ public class ObstacleManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        foreach (Transform child in transform)
+        {
+            Obstacles.Add(child.GetComponent<Obstacle>());
+        }
     }
 }

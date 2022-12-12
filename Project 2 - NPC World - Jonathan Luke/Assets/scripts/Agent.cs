@@ -183,6 +183,43 @@ public abstract class Agent : MonoBehaviour
         }
     }
 
+    
+    protected void FindAnimal<T>(T animal) where T : Agent
+    {
+        // Get a vector from this agent to an obstacle
+        Vector3 toObstacle = animal.physicsObject.Position - physicsObject.Position;
+
+        // use that vector to check if obstacle is behind this agent
+        float fwdToObstacleDot = Vector3.Dot(physicsObject.Direction, toObstacle);
+        if (fwdToObstacleDot < 0)
+        {
+            return; // return early if behind
+        }
+
+        // check if the obstacle is too far to the left or right
+        float rightToObstacleDot = Vector3.Dot(physicsObject.Right, toObstacle);
+
+        if (Mathf.Abs(rightToObstacleDot) > physicsObject.radius + animal.physicsObject.radius)
+        {
+            return; // too far left or right
+        }
+
+        // check if it's within vision range
+       
+
+        if (fwdToObstacleDot > visionRange)
+        {
+            return; // not within range
+        }
+
+
+        // Create weight based on how close to the obstacle
+        float weight = visionRange / (fwdToObstacleDot + 0.1f);
+
+
+        Seek(animal.physicsObject.Position,weight);
+    }
+
     public Vector3 GetFuturePosition(float timeAhead = 1f)
     {
         return physicsObject.Position + physicsObject.Velocity * timeAhead;
